@@ -1,7 +1,9 @@
 package com.backpakcersourav.basiccomponent;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +47,25 @@ public class MainActivity extends AppCompatActivity {
                         String str = rbCourseSelected.getText().toString();
                         tvShow.setText(str);
                     }else {
+                        AlertDialog.Builder alertDialog  = new AlertDialog.Builder(MainActivity.this);
+                        alertDialog.setTitle("Error ");
+                        alertDialog.setMessage("Please choose one course");
+                        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                Toast.makeText(MainActivity.this, "OK Clicked", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        alertDialog.setNegativeButton("Autoselect", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                rbCourseSelected = findViewById(R.id.rbFlutter);
+                                rbCourseSelected.setChecked(true);
+                                String str = rbCourseSelected.getText().toString();
+                                tvShow.setText(str);
+                                return;
+                            }
+                        });
+                        alertDialog.show();
                         tvShow.setText("Not Selected");
                     }
 
