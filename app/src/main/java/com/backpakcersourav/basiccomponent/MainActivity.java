@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         AlertDialog.Builder alertDialog  = new AlertDialog.Builder(MainActivity.this);
                         alertDialog.setTitle("Error ");
+                        alertDialog.setIcon(R.drawable.ic_clear_black_24dp);
                         alertDialog.setMessage("Please choose one course");
                         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int which) {
